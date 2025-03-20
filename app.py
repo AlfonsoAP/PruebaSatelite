@@ -1,12 +1,16 @@
 from flask import Flask, render_template;
 from flask_socketio import SocketIO;
+from flask_cors import CORS, cross_origin;
 
 app = Flask(__name__);
 app.config['SECRET_KEY'] = 'jijijija';
+cors = CORS(app);
+app.config['CORS_HEADERS'] = 'Content-Type';
 
 socketio = SocketIO(app);
 
 @app.route('/')
+@cross_origin()
 def hello_world():
     return 'Adios Mundo';
 
